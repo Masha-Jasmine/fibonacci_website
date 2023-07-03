@@ -1,0 +1,2 @@
+// Submit-Button im Formular (Spiel) nur anklickbar machen, wenn alle Formular Felder ausgefüllt worden sind
+new Vue({el: '#game', data: { identity: '', gamename: '', zahl: '', reihe_fibonacci: '', fibonacci: '' }})

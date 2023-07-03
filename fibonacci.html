@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<head>
+<html lang="de">
+<title>Fibonacci-Folge</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/stylesheet.css">
+<script src="js/canvas.js"></script> 
+<script src="js/validation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script> 
+</head>
+
+<body>
+<!-- Navigation grosser und mittlerer Bildschirm  -->
+<div id="fo-he" class="w3-center w3-top">
+  <a href="#home" class="w3-bar-item w3-button">Home</a>
+  <a href="#canvas-abschnitt" class="w3-bar-item w3-button w3-hide-small">Canvas</a>
+  <a href="#informationen" class="w3-bar-item w3-button w3-hide-small">Information</a>
+  <a href="#spiel" class="w3-bar-item w3-button w3-hide-small">Formular</a>
+  <button class="w3-bar-item w3-button w3-rigth w3-hide-large w3-hide-medium" onclick="document.getElementById('navigation-klein').classList.toggle('w3-hide');"> &#8801</button>
+</div>
+
+<!-- Navigation kleiner Bildschirm  -->
+<div id="navigation-klein" class="w3-bar-block w3-top w3-hide-large w3-hide-medium w3-hide w3-center">
+<a href="#canvas-abschnitt" class="w3-bar-item w3-button w3-hide-medium w3-hide-large" onclick="document.getElementById('navigation-klein').classList.toggle('w3-hide');">Canvas</a> 
+<a href="#informationen" class="w3-bar-item w3-button w3-hide-medium w3-hide-large" onclick="document.getElementById('navigation-klein').classList.toggle('w3-hide');">Information</a>
+<a href="#spiel" class="w3-bar-item w3-button" onclick="document.getElementById('navigation-klein').classList.toggle('w3-hide');">Formular</a>
+</div>
+
+
+<!-- Home Abschnitt -->
+<div class="w3-container w3-content w3-padding-64" id="home" style="max-width:810px">
+  
+          <h1>Die Fibonacci-Folge</h1>
+        
+          <p class="w3-justify">Die Fibonacci-Folge ist eine unendliche Folge von Zahlen. Sie ist durch das rekursive Bildungsgesetz 
+          definiert: f<sub>n</sub> = f<sub>n-1</sub> + f<sub>n-2</sub> für n ≥ 3 mit den Anfangswerten f<sub>1</sub> = f<sub>2</sub> = 1. 
+          Die Folge wurde nach Leonardo Fibonacci benannt, er beschrieb damals das Wachstum von der Kaninchenpopulation mit dieser Folge. 
+          Die einzelnen Zahlen in der Fibonacci-Folge heissen Fibonacci-Zahlen. </p>
+        
+          <p class="w3-justify">Der goldene Schnitt beschreibt das Teilungsverhältnis zweier Grössen zueinander folgendermassen: 
+            <sup>a</sup>&frasl;<sub>b</sub>  = <sup>a+b</sup>&frasl;<sub>a</sub>. Die Zahl des Goldenen Schnittes heisst Phi und 
+            entspricht circa dem gerundeten Wert 1,6180. Umso höher die Zahlen der Fibonacci-Reihe werden, umso mehr nähert sich das 
+            Verhältnis der aufeinanderfolgenden Zahlen der Goldenen Zahl Phi an. </p>         
+</div>
+
+  <!-- Canvas Abschnitt / Visualisierung der Fiboncci-Reihe -->
+<div class="w3-container w3-content w3-padding-64" id="canvas-abschnitt" style="max-width:810px">
+          
+          <h1>Visualisierung der Fibonacci-Zahlen</h1>
+  
+          <p class="w3-justify">Die Fibonacci-Zahlen lassen sich grafisch darstellen, in dem man sie innerhalb eines rechteckigen Rahmens 
+            als Felder darstellt. Dabei entsprechen die Seitenlängen der Kästchen jeweils der zugehörigen Fibonacci-Zahl: </p>
+
+          <canvas id="canvas" width="760" height="420"></canvas>
+</div>
+
+  <!-- Informations Abschnitt -->
+  <div class="w3-container w3-content w3-padding-64" id="informationen" style="max-width:810px">
+      
+        <h1>Information</h1> 
+        
+        <p class="w3-justify">Dies ist ein kurzer Informationsabschnitt, der die Webseite erklären soll. Am Anfang der 
+        Webseite sind einige Fakten zu der Fibonacci-Folge, aber auch zum Goldenen Schnitt zu finden. Im Abschnitt "Canvas" findet man  
+        eine Visualisierung der Fibonacci-Zahlen in Form eines Canvas. In der Sektion "Information" wird die Webseite 
+        und ihr Aufbau kurz erklärt. Der letzte Abschnitt heisst "Formular": Dort kann man mit einem Spiel testen, wie gut man die Fibonacci-Folge kennt. 
+        Falls man noch nicht ganz sattelfest ist, gibt es eine kleine Hilfestellung zum Spiel.</p>
+        
+        <p class="w3-justify">Nun noch einige Beispiel dafür, wo die Fibonacci-Folge überall zu finden ist. </p>
+
+          <ul id="fib-natur">
+            <li v-for="item in items" :key="item.message">
+            {{ item.message }}
+            <script src="js/vue-list-bsp.js"></script>
+            </li>
+          </ul>
+
+          <form id="bild-anzeige">
+              <label for="bilder">Siehe Bilder aus der</label>
+              <select v-model="bilder" id="bilder">
+                <option value="k">Kunst</option>
+                <option value="n">Natur</option>
+              </select>
+
+              <div v-if="bilder == 'k'">
+                  <div class="w3-third"> <img src="img/art-gold.jpg" alt="Zeichnung in Fibonacci Form gold" style="width:70%"></div>
+                  <div class="w3-third"> <img src="img/art-red-blue.jpg" alt="Zeichnung in Fibonacci Form rot-blau" style="width:70%"></div>
+                  <div class="w3-third"><img src="img/art-light.jpg" alt="Zeichnung mit Fibonacci Form hell" style="width:70%"></div>  
+              </div>
+
+              <div v-else>
+                  <div class="w3-third"> <img src="img/sunflower.jpg" alt="Sonnenblume in Fibonacci Form" style="width:70%"></div>
+                  <div class="w3-third"> <img src="img/hurrican.jpg" alt="Hurrican in Fibonacci Form" style="width:70%"></div>
+                  <div class="w3-third"><img src="img/blume.jpg" alt="Blume in Fibonacci Form" style="width:70%"></div> 
+              </div>
+          
+          </form>
+          <script src="js/vue-bilder.js"></script>       
+  </div>
+
+ <!-- Formular Abschnitt / Zahlen Spiel Abschnitt -->
+ <div class="w3-container w3-content w3-padding-64" style="max-width:810px" id="spiel"> 
+      
+      <h1>Zahlen Spiel</h1>
+      
+      <p class="w3-justify">Hier kannst du testen, wie gut du die Fibonacci-Reihe nun schon kennst. Es ist ganz einfach:</p>
+      
+      <p class="w3-justify">Wähle dein Geschlecht und einen Spielnamen aus. Unter "Zahl" gibst du eine Zahl zwischen 0 und 100 ein. Unter "Fibonacci Zahl?" gibst du an, 
+        ob deine Zahl eine Fibonacci-Zahl ist (Antwort "Ja") oder ob es keine ist (Antwort "Nein"). Im letzten Feld gibst du von deiner erfassten Zahl aus die nächst höhere Fibonacci Zahl an.</p> 
+
+      <p class="w3-justify">Wenn du Hilfe benötigst, findest du unten eine kleine <a href="#hilfestellung">Hilfestellung</a>.</p> 
+        
+ 
+      <form id="game" methode="post" action="spiel.php">
+        
+        <fieldset>
+                <div class="row">
+                    <div class="col-20">
+                    <label id="männlich" for="identity">Männlich</label>
+                    </div>
+                    <div class="col-80">
+                    <input v-model="identity" name="identity" type="radio"  value="m" required/>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-20">
+                    <label id="weiblich" for="identity">Weiblich</label>
+                    </div>
+                    <div class="col-80">
+                    <input v-model="identity" name="identity" type="radio" value="w" required/>
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="col-20">
+                    <label id="andere" for="identity">Andere</label>
+                    </div>
+                    <div class="col-80">
+                    <input v-model="identity" name="identity" type="radio" value="a" required/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-20">
+                    <label id="gamename" for="gamename">Spielname</label>
+                    </div>
+                    <div class="col-80">
+                    <input v-model="gamename" name="gamename" type="text" maxlength="15" required/>
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="col-20">
+                    <label for="zahl">Zahl</label>
+                    </div>
+                    <div class="col-80">
+                    <input v-model="zahl" name="zahl" id="zahl" type="number" min="0" max="100" required/>
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-20">
+                  <label for="fibonacci">Fibonacci Zahl?</label>
+                  </div>
+                  <div class="col-80">
+                  <select v-model="fibonacci" name="fibonacci" id="options" required>
+                    <option value="" selected disabled hidden>Wähle eine Option</option> 
+                    <option value=1>Ja</option>
+                    <option value=2>Nein</option>
+                  </select>	
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-20">
+                    <label for="reihe_fibonacci">Nächst höhere Fibonacci-Zahl</label>
+                    </div>
+                    <div class="col-80">
+                    <input v-model="reihe_fibonacci" name="reihe_fibonacci" id="fib" type="number" min="1" max="144" required/>
+                    </div>
+                </div>
+                <br>
+                
+                <button v-bind:disabled="identity == '' || gamename == '' || zahl == '' || reihe_fibonacci == '' || fibonacci == ''" value="Validate" onclick="return Validate()" type = "submit">Beginne Spiel</button>
+        </fieldset>
+      </form>
+      
+      <script src="js/vue-stop-submit.js"></script>
+  
+  
+      <h2 id="hilfestellung" class="w3-content w3-padding-64">Hilfestellung</h2>
+
+          <p class="w3-justify">Bist du dir nicht sicher, welches die nächst höhere Fibonacci-Zahl ist? Hier kannst du eine Fibonacci-Zahl eingeben und die nächst höhere Fibonacci-Zahl wird dir angezeigt.</p>  
+
+            <div id="fibo">
+              <label id="zahl" for="f" >Fibonacci-Zahl = </label>
+              <select v-model="f" name="f" required>
+                <option value="" selected disabled hidden>Wähle eine Option</option> 
+                <option value=0>0</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=5>5</option>
+                <option value=8>8</option>
+                <option value=13>13</option>
+                <option value=21>21</option>
+                <option value=34>34</option>
+                <option value=55>55</option>
+                <option value=89>89</option>
+              </select>	
+              <p>Nächsthöhere Fibonacci-Zahl = {{ c() }}</p>
+              <script src="js/vue-next-fibonacci.js"></script>
+            </div>    
+</div>
+
+<!-- Fusszeile -->
+<footer id="fo-he" class="w3-center w3-padding-64">
+    <p>Webseite von Masha Jasmine Grütter ©2021</p>
+</footer>   
+</body>
+</html>
